@@ -36,19 +36,19 @@ sess.run(tf.global_variables_initializer())
 # 위에서 변수와 수식들을 정의했지만, 실행이 정의한 시점에서 실행되는 것은 아닙니다.
 # 다음처럼 sess.run 함수를 사용하면 그 때 계산이 됩니다.
 # 따라서 모델을 구성하는 것과, 실행하는 것을 분리하여 프로그램을 깔끔하게 작성할 수 있습니다.
-print "=== contants ==="
-print sess.run(hello)
-print "a + b = c =", sess.run(c)
-print "=== x_data ==="
-print x_data
-print "=== W ==="
-print sess.run(W)
-print "=== b ==="
-print sess.run(b)
-print "=== expr ==="
+print ("=== contants ===")
+print (sess.run(hello))
+print ("a + b = c =", sess.run(c))
+print ("=== x_data ===")
+print (x_data)
+print ("=== W ===")
+print (sess.run(W))
+print ("=== b ===")
+print (sess.run(b))
+print ("=== expr ===")
 # expr 수식에는 X 라는 입력값이 필요합니다.
 # 따라서 expr 실행시에는 이 변수에 대한 실제 입력값을 다음처럼 넣어줘야합니다.
-print sess.run(expr, feed_dict={X: x_data})
+print (sess.run(expr, feed_dict={X: x_data}))
 
 # 세션을 닫습니다.
 sess.close()
