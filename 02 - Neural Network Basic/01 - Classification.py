@@ -71,11 +71,14 @@ init = tf.global_variables_initializer()
 sess = tf.Session()
 sess.run(init)
 
-for step in range(100):
+for step in range(200):
     sess.run(train_op, feed_dict={X: x_data, Y: y_data})
-
     if (step + 1) % 10 == 0:
-        print (step + 1), sess.run(cost, feed_dict={X: x_data, Y: y_data})
+        print ( (step + 1), sess.run(cost, feed_dict={X: x_data, Y: y_data}) )
+
+    #_, cost_value = sess.run([train_op, cost], feed_dict={X: x_data, Y: y_data})
+    #if (step + 1) % 10 == 0:
+    #    print ( (step + 1), cost_value )
 
 
 #########
@@ -92,4 +95,4 @@ print ('실제값:', sess.run(target, feed_dict={Y: y_data}))
 
 check_prediction = tf.equal(prediction, target)
 accuracy = tf.reduce_mean(tf.cast(check_prediction, tf.float32))
-print ('정확도: %.2f' % sess.run(accuracy * 100, feed_dict={X: x_data, Y: y_data}))
+print ('정확도1: %.2f' % sess.run(accuracy * 100, feed_dict={X: x_data, Y: y_data}))
