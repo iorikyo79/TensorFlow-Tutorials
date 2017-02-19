@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b0f5cf2d-cd08-4f6d-928f-c887d3a48be7}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>01 - Classification.py</StartupFile>
+    <StartupFile>02 - Deep NN.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
