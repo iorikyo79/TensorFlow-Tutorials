@@ -6,10 +6,9 @@ import numpy as np
 import codecs   #for unicode
 
 # 파일에서 자료 읽기
-#filecp = codecs.open('data.csv', encoding ='utf-8')
 #data = np.loadtxt('data.csv', delimiter=',',
 #                 unpack=True, dtype='float32')
-data = np.genfromtxt('data.csv',dtype='int',delimiter=',')
+data = np.genfromtxt('data.csv',dtype='float32',delimiter=',')  #unicode 지원을 위해 변경
                      #.loadtxt('data.csv', delimiter=',',
                   #unpack=True, dtype='float32')
 
@@ -17,11 +16,11 @@ data = np.genfromtxt('data.csv',dtype='int',delimiter=',')
 # 나머지 열(분류)을 y_data 로 만들어줍니다.
 #x_data = np.transpose(data[0:2])
 #y_data = np.transpose(data[3:])
-x_data = np.transpose(data[0:])
-y_data = x_data[2:]
-x_data = x_data[0:2]
-x_data = np.transpose(x_data[0:])
-y_data = np.transpose(y_data[0:])
+x_data = np.transpose(data[0:]) # 전체 Transpose 처리하고
+y_data = x_data[2:]             # 3열부터 5열까까지 y_data로 할당
+x_data = x_data[0:2]            # 0열부터 1열까지 x_data로 재할당
+x_data = np.transpose(x_data[0:])   # Trnaspose 처리
+y_data = np.transpose(y_data[0:])   #
 
 #########
 # 신경망 모델 구성
@@ -49,12 +48,10 @@ model = tf.matmul(L2, W3)
 # 텐서플로우에서 기본적으로 제공되는 크로스 엔트로피 함수를 이용해
 # 복잡한 수식을 사용하지 않고도 최적화를 위한 비용 함수를 다음처럼 간단하게 적용할 수 있습니다.
 #cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model, Y))
-cost = tf.reduce_mean(-tf.reduce_sum(Y * tf.log(model), axis=1))
-
+cost = tf.reduce_mean(tf.losses.softmax_cross_entropy(Y, model))
 
 optimizer = tf.train.AdamOptimizer(learning_rate=0.01)
 train_op = optimizer.minimize(cost)
-
 
 #########
 # 신경망 모델 학습
@@ -67,13 +64,11 @@ print ('data:', data)
 print ('data x:', x_data)
 print ('data y:', y_data)
 
-
 for step in range(100):
     sess.run(train_op, feed_dict={X: x_data, Y: y_data})
 
     if (step + 1) % 10 == 0:
         print ((step + 1), sess.run(cost, feed_dict={X: x_data, Y: y_data}))
-
 
 #########
 # 결과 확인
