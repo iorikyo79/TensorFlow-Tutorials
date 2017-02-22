@@ -4,15 +4,17 @@
 import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
-import sys
+# matplot의 한글 지원을 위한 import 추가
+from matplotlib import font_manager, rc 
 
-# matplot 에서 한글을 표시하기 위한 설정
-reload(sys)
-sys.setdefaultencoding('utf-8')
-
+#import sys
+# matplot 에서 한글을 표시하기 위한 설정. <- Python3.x부터는 defulat가 utf-8이기 때문에 삭제
+#reload(sys)
+#sys.setdefaultencoding('utf-8')
 
 # 단어 벡터를 분석해볼 임의의 문장들
-sentences = ["나 고양이 좋다",
+#'''
+sentences = ("나 고양이 좋다",
              "나 강아지 좋다",
              "나 동물 좋다",
              "강아지 고양이 동물",
@@ -26,7 +28,22 @@ sentences = ["나 고양이 좋다",
              "나 게임 만화 애니 좋다",
              "고양이 강아지 싫다",
              "강아지 고양이 좋다"]
-
+'''
+sentences = ["i like cat",
+             "i like dog",
+             "i like animal",
+             "dog cat animal",
+             "girlfriend cat dog like",
+             "cat fish milk like",
+             "dog fish dislike milk like",
+             "dog cat snow like",
+             "i like girlfriend",
+             "girlfriend i dislike",
+             "girlfriend i movie music like",
+             "i game catoon animation like",
+             "cat dog dislike",
+             "dog cat like"]
+'''
 # 문장을 전부 합친 후 공백으로 단어들을 나누고 고유한 단어들로 리스트를 만듭니다.
 word_list = " ".join(sentences).split()
 word_list = list(set(word_list))
@@ -108,8 +125,12 @@ nce_biases = tf.Variable(tf.zeros([voc_size]))
 
 # nce_loss 함수를 직접 구현하려면 매우 복잡하지만,
 # 함수를 텐서플로우가 제공하므로 그냥 tf.nn.nce_loss 함수를 사용하기만 하면 됩니다.
+#loss = tf.reduce_mean(
+#           tf.nn.nce_loss(nce_weights, nce_biases, selected_embed, labels, num_sampled, voc_size))
+
+# Tensorflow1.에서 parameter order 변경된듯 함.
 loss = tf.reduce_mean(
-            tf.nn.nce_loss(nce_weights, nce_biases, selected_embed, labels, num_sampled, voc_size))
+            tf.nn.nce_loss(nce_weights, nce_biases, labels, selected_embed, num_sampled, voc_size))
 
 train_op = tf.train.AdamOptimizer(learning_rate).minimize(loss)
 
@@ -129,13 +150,18 @@ with tf.Session() as sess:
                                           labels: batch_labels})
 
         if step % 10 == 0:
-            print "loss at step ", step, ": ", loss_val
+            print( "loss at step ", step, ": ", loss_val )
 
     # matplot 으로 출력하여 시각적으로 확인해보기 위해
     # 임베딩 벡터의 결과 값을 계산하여 저장합니다.
     # with 구문 안에서는 sess.run 대신 간단히 eval() 함수를 사용할 수 있습니다.
     trained_embeddings = embeddings.eval()
 
+
+#########
+# matplot에서 한글이 표시될 수 있도록 한글 폰트 설정.
+font_name = font_manager.FontProperties(fname="c:/Windows/Fonts/malgun.ttf").get_name()
+rc('font', family=font_name)
 
 #########
 # 임베딩된 Word2Vec 결과 확인

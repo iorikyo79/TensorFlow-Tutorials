@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{b0f5cf2d-cd08-4f6d-928f-c887d3a48be7}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>03 - TensorBoard.py</StartupFile>
+    <StartupFile>04 - Word2Vec.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
