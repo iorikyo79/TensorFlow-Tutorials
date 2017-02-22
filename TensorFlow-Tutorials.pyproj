@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2c9124c8-c748-42e3-af19-24506a9fecd3}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile />
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="01 - TensorFlow Basic\01 - Basic.py" />
+    <Compile Include="01 - TensorFlow Basic\02 - Linear Regression.py" />
+    <Compile Include="02 - Neural Network Basic\01 - Classification.py" />
+    <Compile Include="02 - Neural Network Basic\02 - Deep NN.py" />
+    <Compile Include="02 - Neural Network Basic\03 - TensorBoard.py" />
+    <Compile Include="02 - Neural Network Basic\04 - Word2Vec.py" />
+    <Compile Include="03 - MNIST, CNN\01 - MNIST.py" />
+    <Compile Include="03 - MNIST, CNN\02 - Dropout.py" />
+    <Compile Include="03 - MNIST, CNN\03 - CNN.py" />
+    <Compile Include="03 - MNIST, CNN\04 - tf.contrib.layers.py" />
+    <Compile Include="04 - Autoencoder, GAN\01 - Autoencoder.py" />
+    <Compile Include="04 - Autoencoder, GAN\02 - GAN.py" />
+    <Compile Include="04 - Autoencoder, GAN\03 - GAN2.py" />
+    <Compile Include="05 - Inception\predict.py" />
+    <Compile Include="05 - Inception\retrain.py" />
+    <Compile Include="06 - RNN, ChatBot\01 - Counting.py" />
+    <Compile Include="06 - RNN, ChatBot\02 - Dynamic RNN.py" />
+    <Compile Include="06 - RNN, ChatBot\03 - Seq2Seq.py" />
+    <Compile Include="06 - RNN, ChatBot\04 - ChatBot\chat.py" />
+    <Compile Include="06 - RNN, ChatBot\04 - ChatBot\config.py" />
+    <Compile Include="06 - RNN, ChatBot\04 - ChatBot\dialog.py" />
+    <Compile Include="06 - RNN, ChatBot\04 - ChatBot\model.py" />
+    <Compile Include="06 - RNN, ChatBot\04 - ChatBot\train.py" />
+    <Compile Include="07 - DQN\agent.py" />
+    <Compile Include="07 - DQN\game.py" />
+    <Compile Include="07 - DQN\model.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="04 - Autoencoder, GAN\samples2\000.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\010.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\020.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\030.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\040.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\050.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\060.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\070.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\080.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\090.png" />
+    <Content Include="04 - Autoencoder, GAN\samples2\samples.gif" />
+    <Content Include="04 - Autoencoder, GAN\samples\000.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\001.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\002.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\003.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\004.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\005.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\006.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\007.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\008.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\009.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\010.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\011.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\012.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\013.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\014.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\015.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\016.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\017.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\018.png" />
+    <Content Include="04 - Autoencoder, GAN\samples\019.png" />
+    <Content Include="06 - RNN, ChatBot\04 - ChatBot\screenshot.png" />
+    <Content Include="07 - DQN\screenshot_game.gif" />
+    <Content Include="07 - DQN\screenshot_tensorboard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="01 - TensorFlow Basic" />
+    <Folder Include="02 - Neural Network Basic" />
+    <Folder Include="03 - MNIST, CNN" />
+    <Folder Include="04 - Autoencoder, GAN" />
+    <Folder Include="04 - Autoencoder, GAN\samples" />
+    <Folder Include="04 - Autoencoder, GAN\samples2" />
+    <Folder Include="05 - Inception" />
+    <Folder Include="06 - RNN, ChatBot" />
+    <Folder Include="06 - RNN, ChatBot\04 - ChatBot" />
+    <Folder Include="07 - DQN" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
