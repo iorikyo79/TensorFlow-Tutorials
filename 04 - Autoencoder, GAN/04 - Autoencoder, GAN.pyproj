@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{a72cd54f-88b2-4305-8201-f1a435ebd01a}</ProjectGuid>
+    <ProjectHome />
+    <StartupFile>01 - Autoencoder.py</StartupFile>
+    <SearchPath />
+    <WorkingDirectory>.</WorkingDirectory>
+    <OutputPath>.</OutputPath>
+    <ProjectTypeGuids>{888888a0-9f3d-457c-b088-3a5042f75d52}</ProjectTypeGuids>
+    <LaunchProvider>Standard Python launcher</LaunchProvider>
+    <InterpreterId />
+    <InterpreterVersion />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'" />
+  <PropertyGroup>
+    <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
+    <PtvsTargetsFile>$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets</PtvsTargetsFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="01 - Autoencoder.py" />
+    <Compile Include="02 - GAN.py" />
+    <Compile Include="03 - GAN2.py" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="samples2\000.png" />
+    <Content Include="samples2\010.png" />
+    <Content Include="samples2\020.png" />
+    <Content Include="samples2\030.png" />
+    <Content Include="samples2\040.png" />
+    <Content Include="samples2\050.png" />
+    <Content Include="samples2\060.png" />
+    <Content Include="samples2\070.png" />
+    <Content Include="samples2\080.png" />
+    <Content Include="samples2\090.png" />
+    <Content Include="samples2\samples.gif" />
+    <Content Include="samples\000.png" />
+    <Content Include="samples\001.png" />
+    <Content Include="samples\002.png" />
+    <Content Include="samples\003.png" />
+    <Content Include="samples\004.png" />
+    <Content Include="samples\005.png" />
+    <Content Include="samples\006.png" />
+    <Content Include="samples\007.png" />
+    <Content Include="samples\008.png" />
+    <Content Include="samples\009.png" />
+    <Content Include="samples\010.png" />
+    <Content Include="samples\011.png" />
+    <Content Include="samples\012.png" />
+    <Content Include="samples\013.png" />
+    <Content Include="samples\014.png" />
+    <Content Include="samples\015.png" />
+    <Content Include="samples\016.png" />
+    <Content Include="samples\017.png" />
+    <Content Include="samples\018.png" />
+    <Content Include="samples\019.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="samples" />
+    <Folder Include="samples2" />
+  </ItemGroup>
+  <Import Project="$(PtvsTargetsFile)" Condition="Exists($(PtvsTargetsFile))" />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" Condition="!Exists($(PtvsTargetsFile))" />
+</Project>
