@@ -25,7 +25,7 @@ L2 = tf.nn.relu(tf.matmul(L1, W2))
 L2 = tf.nn.dropout(L2, 0.8)
 model = tf.matmul(L2, W3)
 
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model, Y))
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=model))
 optimizer = tf.train.AdamOptimizer(0.001).minimize(cost)
 
 
@@ -47,10 +47,10 @@ for epoch in range(15):
         sess.run(optimizer, feed_dict={X: batch_xs, Y: batch_ys})
         total_cost += sess.run(cost, feed_dict={X: batch_xs, Y: batch_ys})
 
-    print 'Epoch:', '%04d' % (epoch + 1), \
-        'Avg. cost =', '{:.3f}'.format(total_cost / total_batch)
+    print( 'Epoch:', '%04d' % (epoch + 1), \
+        'Avg. cost =', '{:.3f}'.format(total_cost / total_batch) )
 
-print '최적화 완료!'
+print( '최적화 완료!' )
 
 
 #########
@@ -58,6 +58,6 @@ print '최적화 완료!'
 ######
 check_prediction = tf.equal(tf.argmax(model, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(check_prediction, tf.float32))
-print '정확도:', sess.run(accuracy,
+print( '정확도:', sess.run(accuracy,
                        feed_dict={X: mnist.test.images,
-                                  Y: mnist.test.labels})
+                                  Y: mnist.test.labels}) )

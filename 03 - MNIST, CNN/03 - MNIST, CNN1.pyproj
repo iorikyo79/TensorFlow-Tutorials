@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{d26e0d26-fa5e-4f89-84a4-24a68578e8e4}</ProjectGuid>
     <ProjectHome />
-    <StartupFile>01 - MNIST.py</StartupFile>
+    <StartupFile>02 - Dropout.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
