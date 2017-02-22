@@ -240,3 +240,7 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
+/03 - MNIST, CNN/mnist/data/train-labels-idx1-ubyte.gz
+/03 - MNIST, CNN/mnist/data/train-images-idx3-ubyte.gz
+/03 - MNIST, CNN/mnist/data/t10k-labels-idx1-ubyte.gz
+/03 - MNIST, CNN/mnist/data/t10k-images-idx3-ubyte.gz

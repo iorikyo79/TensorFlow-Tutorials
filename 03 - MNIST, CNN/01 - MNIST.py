@@ -34,9 +34,10 @@ L2 = tf.nn.relu(tf.matmul(L1, W2))
 # 최종 모델의 출력값은 W3 변수를 곱해 10개의 분류를 가지게 됩니다.
 model = tf.matmul(L2, W3)
 
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model, Y))
+# softmax_cross_entropy_with_logits parameter order 변경
+#cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model, Y))
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=Y, logits=model))
 optimizer = tf.train.AdamOptimizer(0.001).minimize(cost)
-
 
 #########
 # 신경망 모델 학습
@@ -58,10 +59,10 @@ for epoch in range(15):
         sess.run(optimizer, feed_dict={X: batch_xs, Y: batch_ys})
         total_cost += sess.run(cost, feed_dict={X: batch_xs, Y: batch_ys})
 
-    print 'Epoch:', '%04d' % (epoch + 1),\
-            'Avg. cost =', '{:.3f}'.format(total_cost / total_batch)
+    print( 'Epoch:', '%04d' % (epoch + 1),\
+            'Avg. cost =', '{:.3f}'.format(total_cost / total_batch) )
 
-print '최적화 완료!'
+print( '최적화 완료!' )
 
 
 #########
@@ -72,6 +73,6 @@ print '최적화 완료!'
 # 예) [0.1 0 0 0.7 0 0.2 0 0 0 0] -> 4
 check_prediction = tf.equal(tf.argmax(model, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(check_prediction, tf.float32))
-print '정확도:', sess.run(accuracy,
+print( '정확도:', sess.run(accuracy,
                             feed_dict={X: mnist.test.images,
-                                       Y: mnist.test.labels})
+                                       Y: mnist.test.labels}) )
