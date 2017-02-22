@@ -40,7 +40,7 @@ L5 = tf.contrib.layers.fully_connected(L5, 256,
                                        normalizer_fn=tf.contrib.layers.batch_norm)
 model = tf.contrib.layers.fully_connected(L5, n_output)
 
-cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(model, Y))
+cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(logits=model, labels=Y))
 optimizer = tf.train.AdamOptimizer(0.001).minimize(cost)
 
 
@@ -64,10 +64,10 @@ for epoch in range(15):
         _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_xs, Y: batch_ys})
         total_cost += cost_val
 
-    print 'Epoch:', '%04d' % (epoch + 1), \
-        'Avg. cost =', '{:.3f}'.format(total_cost / total_batch)
+    print ('Epoch:', '%04d' % (epoch + 1), \
+            'Avg. cost =', '{:.3f}'.format(total_cost / total_batch))
 
-print '최적화 완료!'
+print ('최적화 완료!')
 
 
 #########
@@ -75,6 +75,28 @@ print '최적화 완료!'
 ######
 check_prediction = tf.equal(tf.argmax(model, 1), tf.argmax(Y, 1))
 accuracy = tf.reduce_mean(tf.cast(check_prediction, tf.float32))
-print '정확도:', sess.run(accuracy,
-                       feed_dict={X: mnist.test.images.reshape(-1, 28, 28, 1),
-                                  Y: mnist.test.labels})
+#print ('정확도:', sess.run(accuracy,
+#                       feed_dict={X: mnist.test.images.reshape(-1, 28, 28, 1),
+#                                  Y: mnist.test.labels}) )
+
+#####
+# GPU가 낮은 관계로 한번에 test set을 전부 올리는게 불가능.
+# batch로 나눠서 test set을 올리도록 변경함.
+batch_size = 100
+test_batch_count = int(mnist.test.num_examples/batch_size)
+
+#print('mnist.test.num_examples : ', int(mnist.test.num_examples))
+
+total_accuracy = 0
+for i in range(test_batch_count):
+    test_batch_xs, test_batch_ys = mnist.test.next_batch(batch_size)
+    test_batch_xs = test_batch_xs.reshape(-1, 28, 28, 1)
+    accuracy_value = sess.run(accuracy,
+                                feed_dict={ X: test_batch_xs,
+                                            Y: test_batch_ys}) 
+
+    total_accuracy += accuracy_value
+    print(i,'accuracy : ', accuracy_value, '. Sum : ', total_accuracy, )
+
+print('Total accuracy : ', total_accuracy)
+print('정확도 : ', ' =', '{:.3f}'.format(total_accuracy / test_batch_count))
