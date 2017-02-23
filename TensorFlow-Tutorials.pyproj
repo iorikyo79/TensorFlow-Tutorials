@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{2c9124c8-c748-42e3-af19-24506a9fecd3}</ProjectGuid>
     <ProjectHome />
-    <StartupFile />
+    <StartupFile>04 - Autoencoder, GAN\01 - Autoencoder.py</StartupFile>
     <SearchPath />
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>

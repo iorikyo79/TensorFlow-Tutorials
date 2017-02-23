@@ -74,10 +74,10 @@ for epoch in range(training_epoch):
         _, cost_val = sess.run([optimizer, cost], feed_dict={X: batch_xs})
         total_cost += cost_val
 
-    print 'Epoch:', '%04d' % (epoch + 1), \
-        'Avg. cost =', '{:.6f}'.format(total_cost / total_batch)
+    print ('Epoch:', '%04d' % (epoch + 1), \
+            'Avg. cost =', '{:.6f}'.format(total_cost / total_batch))
 
-print '최적화 완료!'
+print ('최적화 완료!')
 
 
 #########
